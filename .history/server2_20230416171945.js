@@ -4,19 +4,13 @@ const express = require("express");
 const app = express();
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const fs = require('fs');
-
-let users = [];
-
-let data = fs.readFileSync('data.json');
-users = JSON.parse(data);
-console.log(users);
 
 app.use(express.json());
 app.use(express.static('public'));
 
 app.set('view engine', 'ejs');
 
+const users = []
 
 app.get("/", (req, res) => {
     res.render("index.ejs", {
@@ -84,4 +78,5 @@ function authenticateToken(req, res, next) {
   });
 }
 
-app.listen(3002);
+app.listen(8000);
+

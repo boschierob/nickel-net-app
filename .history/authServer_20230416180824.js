@@ -6,11 +6,9 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const fs = require('fs');
 
-let users = [];
-
-let data = fs.readFileSync('data.json');
-users = JSON.parse(data);
-console.log(users);
+const data = fs.readFileSync('data.json');
+const users = JSON.parse(data);
+console.log(`data forom json file :${users}`);
 
 app.use(express.json());
 app.use(express.static('public'));
@@ -84,4 +82,4 @@ function authenticateToken(req, res, next) {
   });
 }
 
-app.listen(3002);
+app.listen(8000);

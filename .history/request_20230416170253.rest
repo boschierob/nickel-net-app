@@ -1,0 +1,31 @@
+GET http://localhost:3002/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoicmVuZSIsImlhdCI6MTY4MTY1NjM0Nn0.kFV8o3xDwG2yBz0_XqyHcP9EAfeP8O9v0r0iYXxE5Wg
+################################
+POST http://localhost:3002/users
+Content-Type: application/json
+
+{
+    "name": "rene",
+    "password": "rere",
+    "title": "Post de rene"
+}
+################################
+POST http://localhost:3002/users/login
+Content-Type: application/json
+
+{
+    "name": "rene",
+    "password": "rere"
+}
+
+################################
+GET http://localhost:3002/posts
+
+################################
+POST http://localhost:3002/users/login
+Content-Type: application/json
+
+{
+    "name": "Laura",
+    "password": "qwerty"
+}

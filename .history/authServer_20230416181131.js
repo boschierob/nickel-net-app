@@ -8,9 +8,13 @@ const fs = require('fs');
 
 let users = [];
 
-let data = fs.readFileSync('data.json');
-users = JSON.parse(data);
-console.log(users);
+fs.readFile('data.json', (err, data) => {
+  if (err) throw err;
+  let users = JSON.parse(data);
+  console.log(users);
+});
+
+console.log('This is after the read call');
 
 app.use(express.json());
 app.use(express.static('public'));
@@ -84,4 +88,4 @@ function authenticateToken(req, res, next) {
   });
 }
 
-app.listen(3002);
+app.listen(8000);

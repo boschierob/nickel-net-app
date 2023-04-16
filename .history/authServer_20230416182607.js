@@ -10,7 +10,9 @@ let users = [];
 
 let data = fs.readFileSync('data.json');
 users = JSON.parse(data);
+
 console.log(users);
+
 
 app.use(express.json());
 app.use(express.static('public'));
@@ -41,6 +43,13 @@ app.post("/users",async (req, res) => {
    } catch (error) {
     res.status(500).send();
    }
+    fs.writeFileSync("data.json", JSON.stringify(users, null, 2), (err) => {
+      if (err) {
+          console.log("Failed to write updated data to file");
+          return;
+      }
+      console.log("Updated file successfully");
+    });
 });
 
 app.post("/users/login",async (req, res) => {
@@ -84,4 +93,4 @@ function authenticateToken(req, res, next) {
   });
 }
 
-app.listen(3002);
+app.listen(8000);

@@ -1,0 +1,20 @@
+[
+  {
+    "name": "brigitte",
+    "password": "$2b$10$Xbl9HKD62S54fzTJYx3BauyT1yNjpxSUVZLjDZd31HhzitRvQi.86"
+  },
+  {
+    "name": "coco",
+    "password": "azerty2"
+  },
+  {
+    "name": "yvan",
+    "password": "$2b$10$CTBya5P2/fLzNjoCGNo.pu2hQN.5Eb.UCGp0MEBqqjrUYUXHvHM6m",
+    "title": "Post de yvan et ces ami"
+  },
+  {
+    "name": "pierro",
+    "password": "$2b$10$fXUNEjYQvrAS4waUB1152OS6AMUtQx.SBVHePdT5kaniHSgn1Qqn6",
+    "title": "Je suis en vacances"
+  }
+]
