@@ -1,0 +1,29 @@
+GET http://localhost:3002/users
+
+################################
+POST http://localhost:3002/users
+Content-Type: application/json
+
+{
+    "name": "Jean",
+    "password": "azerty"
+}
+################################
+POST http://localhost:3002/users/login
+Content-Type: application/json
+
+{
+    "name": "Jean",
+    "password": "azerty"
+}
+
+################################
+GET http://localhost:3002/posts
+
+################################
+POST http://localhost:3002/login
+Content-Type: application/json
+
+{
+    "username": "jiro"
+}

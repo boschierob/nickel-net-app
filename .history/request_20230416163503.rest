@@ -1,0 +1,31 @@
+GET http://localhost:3002/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiTGF1cmEiLCJpYXQiOjE2ODE2NTU1NTh9.eEunTslCiR8gW5mjXidlSRpmtl7RJDQrDHjAxQs9AmY
+################################
+POST http://localhost:3002/users
+Content-Type: application/json
+
+{
+    "name": "Laura",
+    "password": "qwerty",
+    "title": "Post de Laura"
+}
+################################
+POST http://localhost:3002/users/login
+Content-Type: application/json
+
+{
+    "name": "Laura",
+    "password": "qwerty"
+}
+
+################################
+GET http://localhost:3002/posts
+
+################################
+POST http://localhost:3002/users/login
+Content-Type: application/json
+
+{
+    "name": "Laura",
+    "password": "qwerty"
+}

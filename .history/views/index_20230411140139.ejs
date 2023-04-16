@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+</head>
+<body>
+    <% if (!isLogged && !user) { %>
+        <div class="login">
+            <form action="">
+                <label for="email">email</label>
+                <input type="text">
+                <label for="password">Password</label>
+                <input type="password">
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+      <% } %>
+      <% if (isLogged && user) { %>
+      <div class="greetings">
+        <h2>Hello <%= user.name %></h2>   
+    </div>
+
+    <% } %>
+      
+      
+ <script type="text/javascript" >
+    document.addEventListener("DOMContentLoaded", function(event) {
+            const login = document.querySelector("form");
+            login.addEventListener('submit',(e)=>{
+                e.preventDefault();
+                console.log(`form submitted ${e}`);
+        })
+    });  
+ </script>   
+</body>
+</html>
