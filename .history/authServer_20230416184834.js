@@ -7,7 +7,6 @@ const jwt = require("jsonwebtoken");
 const fs = require('fs');
 
 let users = [];
-let refreshTokens = [];
 
 let data = fs.readFileSync('data.json');
 users = JSON.parse(data);
@@ -27,17 +26,6 @@ app.get("/", (req, res) => {
       user:null
     })
 });
-
-app.post("/token", (req, res) => {
-  const refreshToken = req.body.token;
-  if(refreshToken == null) return res.sendStatus(401)
-  if(!refreshToken.includes(refreshToken)) return res.sendStatus(403);
-  jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, user) =>{
-    if (err) return res.sendStatus(403)
-    const accessToken = generateAccessToken( { name: user.name})
-    res.json( { accessToken : accessToken})
-  })
-})
 
 app.get("/users", (req, res) => {
     res.json(users.filter(user => user.name === req.user.name));
@@ -79,8 +67,7 @@ app.post("/users/login",async (req, res) => {
         const userDatas = { name: username} 
 
          const accessToken = generateAccessToken(userDatas);
-         const refreshToken = jwt.sign(userDatas, process.env.REFRESH_TOKEN_SECRET);
-         refreshTokens.push(refreshToken);
+         const refreshToken = jwt.sign(userDatas, process.env.REFRESH_TOKEN_SECRET)
         res.json({ accessToken: accessToken, refreshToken: refreshToken}) 
 
       } else{
@@ -93,7 +80,7 @@ app.post("/users/login",async (req, res) => {
 });
 
 function generateAccessToken(user) {
-  return jwt.sign(user, process.env.ACCES_TOKEN_SECRET, { expiresIn: '15s' })
+  return jwt.sign(user, process.env.ACCES_TOKEN_SECRET, { expiresIn: '120s' })
 }
 
 app.listen(8000);

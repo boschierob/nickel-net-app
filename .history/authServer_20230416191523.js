@@ -93,7 +93,7 @@ app.post("/users/login",async (req, res) => {
 });
 
 function generateAccessToken(user) {
-  return jwt.sign(user, process.env.ACCES_TOKEN_SECRET, { expiresIn: '15s' })
+  return jwt.sign(user, process.env.ACCES_TOKEN_SECRET, { expiresIn: '5s' })
 }
 
 app.listen(8000);

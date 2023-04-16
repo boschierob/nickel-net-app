@@ -1,0 +1,32 @@
+GET http://localhost:3002/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoicGllcnJvIiwiaWF0IjoxNjgxNjYzNzE5LCJleHAiOjE2ODE2NjM4Mzl9.bv7JxMdKOuNKjAYl1dvXmc1N-sqlFzm9GpNQZfl3koA
+
+################################
+POST http://localhost:8000/users
+Content-Type: application/json
+
+{
+    "name": "pierro",
+    "password": "123456",
+    "title": "Je suis en vacances"
+}
+################################
+POST http://localhost:8000/users/login
+Content-Type: application/json
+
+{
+    "name": "pierro",
+    "password": "123456"
+}
+
+################################
+GET http://localhost:3002/posts
+
+################################
+POST http://localhost:3002/users/login
+Content-Type: application/json
+
+{
+    "name": "Laura",
+    "password": "qwerty"
+}
