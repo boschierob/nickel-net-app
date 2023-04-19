@@ -1,40 +1,36 @@
 require("dotenv").config();
-var { authRole } = require('./roleAuthMiddleware/roleAuth');
 
 const express = require("express");
 const app = express();
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const fs = require('fs');
-const { ROLE } = require('./data/role');
-
 //const { users } = require('./data')
-const projectRouter = require('./routes/projects');
-app.use('/projects', projectRouter);
-
+const projectRouter = require('./routes/projects')
 
 let users = [];
+let projects = [{
+  id:"1",
+  cutomer:"lolo",
+  price:500
+}];
 
 let data = fs.readFileSync('data.json');
 users = JSON.parse(data);
+console.log(users);
 
 app.use(express.json());
 app.use(express.static('public'));
 
 app.set('view engine', 'ejs');
 
-app.get('/',(req, res) => {
-  res.send('Home Page')
-})
 
-app.get('/admin-page', authenticateToken, authRole(ROLE.ADMIN),(req, res) => {
-  res.send('Admin Page')
-})
-
-app.get('/dashboard',authenticateToken, authRole(ROLE.EMPLOYEE),(req, res) => {
-  res.send('Dashboard Page')
-})
-
+app.get("/", (req, res) => {
+    res.render("index.ejs", {
+      isLogged: false,
+      user:null
+    })
+});
 
 app.get("/users", authenticateToken, (req, res) => {
     res.json(users.filter(user => user.name === req.user.name));
@@ -97,7 +93,5 @@ function authenticateToken(req, res, next) {
     next();
   });
 }
-
-
 
 app.listen(3002);

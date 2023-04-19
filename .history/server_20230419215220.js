@@ -56,17 +56,16 @@ app.post("/users",async (req, res) => {
 
 app.post("/users/login",async (req, res) => {
   //Authenticate User
-  console.log(req.body.name);
     const user = users.find(user => user.name === req.body.name);
     if (user == null) {
         return res.status(400).send('Cannot find user')
     }
     try {
-      console.log(user)
       if (await  bcrypt.compare(req.body.password, user.password)){
 
         const username = req.body.name;
-        const userDatas = { name: username} 
+        const userDatas = { name: username,
+                            role: user.role} 
 
          const accessToken = jwt.sign(userDatas, process.env.ACCES_TOKEN_SECRET)
         res.json({ accessToken: accessToken}) 

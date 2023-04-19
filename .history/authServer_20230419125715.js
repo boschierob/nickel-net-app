@@ -78,15 +78,25 @@ app.post("/users/login", async (req, res) => {
     if (await bcrypt.compare(req.body.password, user.password)) {
 
       const username = req.body.name;
+      const userrole = user.role;
       const userDatas = {
         name: username
       }
-    
-     
+      console.log(userrole)
+      if (userrole === 'admin') {
+        const accessToken = generateAdminAccessToken(userDatas);
+        const refreshToken = jwt.sign(userDatas, process.env.ADMIN_REFRESH_TOKEN_SECRET);
+        refreshTokens.push(refreshToken);
+        res.json({ accessToken: accessToken, refreshToken: refreshToken })
+        console.log(`access token for admin : ${userrole}`);
+      } else{
         const accessToken = generateAccessToken(userDatas);
         const refreshToken = jwt.sign(userDatas, process.env.REFRESH_TOKEN_SECRET);
         refreshTokens.push(refreshToken);
-        res.json({ accessToken: accessToken, refreshToken: refreshToken })     
+        res.json({ accessToken: accessToken, refreshToken: refreshToken })
+
+      }
+     
 
     } else {
       res.status(403).send('Not Allowed');
@@ -98,8 +108,11 @@ app.post("/users/login", async (req, res) => {
 });
 
 function generateAccessToken(user) {
-  return jwt.sign(user, process.env.ACCES_TOKEN_SECRET, { expiresIn: '600s' })
+  return jwt.sign(user, process.env.ACCES_TOKEN_SECRET, { expiresIn: '30s' })
 }
 
+function generateAdminAccessToken(user) {
+  return jwt.sign(user, process.env.ADMIN_ACCES_TOKEN_SECRET, { expiresIn: '30s' });
+}
 
 app.listen(8000);

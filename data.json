@@ -1,20 +1,25 @@
 [
   {
     "name": "brigitte",
-    "password": "$2b$10$Xbl9HKD62S54fzTJYx3BauyT1yNjpxSUVZLjDZd31HhzitRvQi.86"
+    "password": "$2b$10$Xbl9HKD62S54fzTJYx3BauyT1yNjpxSUVZLjDZd31HhzitRvQi.86",
+    "role": "admin"
   },
   {
-    "name": "coco",
-    "password": "azerty2"
+    "name": "juju",
+    "password": "$2b$10$yAqhEHzt9mQpZ6QiYAJyWOXC8BY86bj6zXwO/bhVv2KojbQ9mdDB.",
+    "title": "c'est moi le chef ",
+    "role": "admin"
   },
   {
-    "name": "yvan",
-    "password": "$2b$10$CTBya5P2/fLzNjoCGNo.pu2hQN.5Eb.UCGp0MEBqqjrUYUXHvHM6m",
-    "title": "Post de yvan et ces ami"
+    "name": "ester",
+    "password": "$2b$10$Fg2EMettYAp/3Dl8xLOfO.0fKto9M2J2ZdMHy5FJybbRUk9eug2yi",
+    "title": "j'écris un cv ",
+    "role": "employee"
   },
   {
-    "name": "pierro",
-    "password": "$2b$10$fXUNEjYQvrAS4waUB1152OS6AMUtQx.SBVHePdT5kaniHSgn1Qqn6",
-    "title": "Je suis en vacances"
+    "name": "leon",
+    "password": "$2b$10$ElA7e1bs08gCrncrEGVtJ.VaJK9CGxpaB3t9ASOpOwXL9blXPJZ5a",
+    "title": "je suis intéressé",
+    "role": "customer"
   }
 ]

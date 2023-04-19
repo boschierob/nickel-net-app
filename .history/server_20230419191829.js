@@ -6,7 +6,6 @@ const app = express();
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const fs = require('fs');
-const { ROLE } = require('./data/role');
 
 //const { users } = require('./data')
 const projectRouter = require('./routes/projects');
@@ -27,11 +26,11 @@ app.get('/',(req, res) => {
   res.send('Home Page')
 })
 
-app.get('/admin-page', authenticateToken, authRole(ROLE.ADMIN),(req, res) => {
+app.get('/admin-page', authenticateToken, authRole('admin'),(req, res) => {
   res.send('Admin Page')
 })
 
-app.get('/dashboard',authenticateToken, authRole(ROLE.EMPLOYEE),(req, res) => {
+app.get('/dashboard', (req, res) => {
   res.send('Dashboard Page')
 })
 

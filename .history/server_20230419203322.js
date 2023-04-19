@@ -6,7 +6,7 @@ const app = express();
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const fs = require('fs');
-const { ROLE } = require('./data/role');
+const { ROLE } = require('./data/data');
 
 //const { users } = require('./data')
 const projectRouter = require('./routes/projects');

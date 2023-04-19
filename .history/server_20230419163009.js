@@ -6,7 +6,6 @@ const app = express();
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const fs = require('fs');
-const { ROLE } = require('./data/role');
 
 //const { users } = require('./data')
 const projectRouter = require('./routes/projects');
@@ -14,27 +13,35 @@ app.use('/projects', projectRouter);
 
 
 let users = [];
+let projects = [{
+  id:"1",
+  cutomer:"lolo",
+  price:500
+}];
+const role = 'admin';
 
 let data = fs.readFileSync('data.json');
 users = JSON.parse(data);
+console.log(users);
 
 app.use(express.json());
 app.use(express.static('public'));
 
 app.set('view engine', 'ejs');
 
-app.get('/',(req, res) => {
+app.use(setUser);
+app.get('/',authRole(users.role),(req, res) => {
+  console.log(users)
   res.send('Home Page')
 })
 
-app.get('/admin-page', authenticateToken, authRole(ROLE.ADMIN),(req, res) => {
-  res.send('Admin Page')
-})
-
-app.get('/dashboard',authenticateToken, authRole(ROLE.EMPLOYEE),(req, res) => {
+app.get('/dashboard', (req, res) => {
   res.send('Dashboard Page')
 })
 
+app.get('/admin', (req, res) => {
+  res.send('Admin Page')
+})
 
 app.get("/users", authenticateToken, (req, res) => {
     res.json(users.filter(user => user.name === req.user.name));
@@ -98,6 +105,12 @@ function authenticateToken(req, res, next) {
   });
 }
 
-
+function setUser(req, res, next) {
+  const name = req.name
+  if (name) {
+    req.user = users.find(user => user.name === name)
+  }
+  next()
+}
 
 app.listen(3002);
