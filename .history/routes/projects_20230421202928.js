@@ -8,7 +8,8 @@ const { canViewProjects, scopedProjects } = require('../permissions/projects')
 
 router.get('/', authenticateToken, (req, res) => {
   console.log(projects)
-  res.json(scopedProjects(req.user, projects))
+  res.json(projects)
+  
 })
 
 router.get('/:projectId', setProject,authenticateToken, authGetProject, (req, res) => {

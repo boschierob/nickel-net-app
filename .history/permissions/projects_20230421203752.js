@@ -15,9 +15,8 @@ function canViewProjects (user, project){
 }
 
 function scopedProjects(user, projects){
-    const oneUser = users.find(wantedUser => wantedUser.name === user.name )
-    console.log(oneUser.role)
-    if(oneUser.role === ROLE.ADMIN) return projects
+    console.log(user)
+    if(user.role === ROLE.ADMIN) return projects
     return projects.filter(project => project.userName === user.name)
 }
 
