@@ -1,0 +1,13 @@
+POST http://localhost:3002/interventions/addIntervention
+Content-Type: application/json
+
+{
+  "date": "2023-05-01T12:00:00.000Z",
+  "technician": "615fc3d8c19c2d345437f75a",
+  "customer": "615fc3d8c19c2d345437f75b",
+  "address": "2 rue de la foret",
+  "equipment": "615fc3d8c19c2d345437f75c",
+  "description": "This is a new intervention",
+  "status": "Scheduled",
+  "project": "615fc3d8c19c2d345437f75d"
+}

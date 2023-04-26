@@ -1,0 +1,56 @@
+GET http://localhost:3002/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiZXN0ZXIiLCJpYXQiOjE2ODIxMDI0OTMsImV4cCI6MTY4MjEwMzA5M30.WQUk9kILsM32KcescHhHTZFIAFiHGCc0wSaogceDxeA
+
+################################
+POST http://localhost:8000/token
+Content-Type: application/json
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoianVqdSIsImlhdCI6MTY4MTkzMDg5Nn0.n16VBmiq3IYf9lL1udIMvsM0Te2lI8yu4Y_16g0RNIE"
+}
+################################
+POST http://localhost:8000/users
+Content-Type: application/json
+
+{
+    "name": "leon",
+    "password": "azerty",
+    "title": "je suis intéressé",
+    "role": "customer"
+}
+################################
+POST http://localhost:8000/users/login
+Content-Type: application/json
+
+{
+    "name": "ester",
+    "password": "123456"
+}
+
+################################
+DELETE http://localhost:8000/users/logout
+Content-Type: application/json
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiZXN0ZXIiLCJpYXQiOjE2ODIxMDE4NjEsImV4cCI6MTY4MjEwMjQ2MX0.ko9YM5Z0W82QSQH4l8NKZy3iI8cyE_T3DJAEpH9Jj_c"
+}
+
+################################
+################################
+GET http://localhost:3002/admin-page
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoianVqdSIsImlhdCI6MTY4MTkyODUxOCwiZXhwIjoxNjgxOTI4NTQ4fQ.9OGGzY7JfPy0TetkjMfFGNtxy5kRLL3gk7qu5-CqA0w
+
+{
+    "name": "juju"
+}
+
+################################################################
+GET http://localhost:3002/projects/3
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiZXN0ZXIiLCJpYXQiOjE2ODE5MzQ2MjgsImV4cCI6MTY4MTkzNTIyOH0.mMHdWMAxA2gWezOjNMIPFOj7ZgF4Nu8zwE2HAFBAjNw
+
+################################################################
+GET http://localhost:3002/projects
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiZXN0ZXIiLCJpYXQiOjE2ODIxMDI0OTMsImV4cCI6MTY4MjEwMzA5M30.WQUk9kILsM32KcescHhHTZFIAFiHGCc0wSaogceDxeA
+

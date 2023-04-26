@@ -6,9 +6,7 @@ const app = express();
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const fs = require('fs');
-
 const bodyParser = require('body-parser');
-app.use(bodyParser.json());
 
 const { ROLE } = require('./data/role');
 
@@ -23,11 +21,9 @@ db.once('open', function () {console.log('Connected to Database')})
 //const Subscriber = require('../models/subscriber')
 
 //const { users } = require('./data')
-const userRouter = require('./routes/users');
 const projectRouter = require('./routes/projects');
 const interventionRouter = require('./routes/interventions');
 
-app.use('/users', userRouter)
 app.use('/projects', projectRouter);
 app.use('/interventions', interventionRouter);
 

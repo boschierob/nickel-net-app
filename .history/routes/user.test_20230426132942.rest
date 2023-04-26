@@ -1,0 +1,31 @@
+POST http://localhost:3002/users/addUser
+Content-Type: application/json
+
+{
+    "name":"Bernard",
+    "email": "bernard@example.com",
+    "password":"example",
+    "role":"employee",
+    "projects":"[xxxoooosoos4543354sdsd434]"
+    
+}
+
+################################################################
+GET http://localhost:3002/interventions/getInterventions
+Content-Type: application/json
+
+################################################################
+PATCH http://localhost:3002/interventions/updateIntervention/6448ff57e6df866bb1291f72
+Content-Type: application/json
+
+
+{
+  "status": "Completed"
+}
+
+####
+6448ff6de6df866bb1291f76
+#####
+DELETE http://localhost:3002/interventions/6448ff6de6df866bb1291f76
+Content-Type: application/json
+
